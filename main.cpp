@@ -13,6 +13,9 @@ using namespace std;
 
 ifstream fin("test.txt");
 ofstream fout("out.txt");
+ofstream f_sub_session("sub_session.txt");
+ofstream f_initiaive_flow("initiaive_flow.txt");
+ofstream f_passive_flow("passive_flow.txt");
 
 int main()
 {
@@ -22,24 +25,23 @@ int main()
 	vector<string> fake;
 	fake.push_back("BCD");
 	fake.push_back("CDE");
-	bool isfaked = false;
+	FlowResult* flowResult = new FlowResult();
+	Handle* hr2 = new HandleRightPattern2(NULL);
+	Handle* hr1 = new HandleRightPattern1(hr2);
+	Handle* hl2 = new HandleLeftPattern2(hr1);
+	Handle* hl1 = new HandleLeftPattern1(hl2);
 	while (fin.getline(temp, sizeof(temp)))
 	{
-		if (isfaked) {
+		if (flowResult->needFake) {
 			cout << temp << endl;
 			fout << temp << endl;
-			isfaked = false;
+			flowResult->needFake = false;
 			continue;
 		}
 		string line = temp;
-		Handle* hr2 = new HandleRightPattern2(NULL);
-		Handle* hr1 = new HandleRightPattern1(hr2);
-		Handle* hl2 =new HandleLeftPattern2(hr1);
-		Handle* hl1 = new HandleLeftPattern1(hl2);
-		isfaked = hl1->exec(line, fake);
-		cout << isfaked << endl;
-		//fout << line <<endl;
+		hl1->exec(line, fake, flowResult);
 	}
+	delete flowResult, hr1, hr2, hl1, hl2;
 	fin.clear();
 	fin.close();
 	fout.close();

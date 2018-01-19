@@ -14,3 +14,8 @@ else                                               \
 #define LEFT_PATTERN_2 "(.*) --> (.*) : (.*)"
 #define RIGHT_PATTERN_1 "(.*) <- (.*) : (.*)"
 #define RIGHT_PATTERN_2 "(.*) <-- (.*) : (.*)"
+
+struct FlowResult {
+	bool needFake = false;
+	bool isFakeSub = false;
+};

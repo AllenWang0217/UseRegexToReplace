@@ -4,9 +4,12 @@
 
 struct HandleLeftPattern1 : public Handle, public HandleLeft {
 	HandleLeftPattern1(Handle* nextHandle) : nextHandle(nextHandle) {};
-	bool exec(string line, vector<string> fake) {
+	void exec(string line, vector<string> fake, FlowResult* result) {
 		regex pattern(LEFT_PATTERN_1);
-		return handleLeft(fake, this->nextHandle, line, pattern);
+		if (!handleLeft(fake, line, pattern, result)) {
+			if (NULL != nextHandle)
+				nextHandle->exec(line, fake, result);
+		}
 	}
 private:
 	Handle* nextHandle;
