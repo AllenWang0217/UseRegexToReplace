@@ -2,6 +2,7 @@
 #include <sstream>
 #include <fstream>
 #include <string> 
+#include <vector>
 #include <regex>  
 #include "helper.h"
 #include "HandleLeftPattern1.h"
@@ -18,7 +19,9 @@ int main()
 	ASSERT_OPEN_SUCCESS(fin);
 	ASSERT_OPEN_SUCCESS(fout);
 	char temp[1024] = { 0 };
-	string fake = "BCD";
+	vector<string> fake;
+	fake.push_back("BCD");
+	fake.push_back("CDE");
 	bool isfaked = false;
 	while (fin.getline(temp, sizeof(temp)))
 	{
