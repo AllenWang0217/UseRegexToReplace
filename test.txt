@@ -1,14 +1,14 @@
 ABC -> BCD : Action1
-note left: "Session1",1,"content1"
+note left: "Session_1",1,"content1"
 BCD --> CDE : Action2
-note left: "Session1",1,"content1"
+note left: "Session_2",2,"content2"
 CDE <- DEF : Action3
-note left: "Session1",1,"content1"
+note left: "Session3",3,"content3"
 DEF --> BCD : Action4
-note left: "Session1",1,"content1"
+note left: "Session4",4,"content4"
 ABC <- BCD : Action5
-note left: "Session1",1,"content1"
+note left: "Session5",5,"content5"
 ABC <- DEF : Action6
-note left: "Session1",1,"content1"
+note left: "Session6",6,"content6"
 CDE -> BCD : Action7
-note left: "Session1",1,"content1"
+note left: "Session7",7,"content7"

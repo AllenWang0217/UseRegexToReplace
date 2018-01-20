@@ -1,5 +1,5 @@
 #pragma once
-
+#include <string>
 #define ASSERT_OPEN_SUCCESS(fin)                   \
 if (!fin)                                          \
 {                                                  \
@@ -7,7 +7,7 @@ if (!fin)                                          \
 }                                                  \
 else                                               \
 {                                                  \
-	cout << "open the file successfully" << endl;  \
+/*	cout << "open the file successfully" << endl;*/\
 }    
 
 #define LEFT_PATTERN_1 "(.*) -> (.*) : (.*)"
@@ -18,4 +18,5 @@ else                                               \
 struct FlowResult {
 	bool needFake = false;
 	bool isFakeSub = false;
+	std::string msg;
 };

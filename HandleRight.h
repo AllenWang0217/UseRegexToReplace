@@ -16,7 +16,6 @@ struct HandleRight {
 		if (regex_search(line, group, pattern)) {
 			string left = group[1];
 			string right = group[2];
-			cout << "left is : " << left << ", right is : " << right << endl;
 			auto it_left = find(fake.begin(), fake.end(), left);
 			auto it_right = find(fake.begin(), fake.end(), right);
 			if (it_left != fake.end() && it_right == fake.end())
@@ -26,6 +25,7 @@ struct HandleRight {
 				fout << regex_replace(line, pattern, repl + " <- $2 : $3") << endl;
 				result->needFake = true;
 				result->isFakeSub = true;
+				result->msg = group[3];
 				return true;
 			}
 			if (it_right != fake.end() && it_left == fake.end())
@@ -34,6 +34,7 @@ struct HandleRight {
 				cout << regex_replace(line, pattern, "$1 <- " + repl + " : $3") << endl;
 				fout << regex_replace(line, pattern, "$1 <- " + repl + " : $3") << endl;
 				result->needFake = true;
+				result->msg = group[3];
 				return true;
 			}
 		}
