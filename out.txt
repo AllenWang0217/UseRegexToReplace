@@ -1,8 +1,0 @@
-ABC -> fake(BCD) : Action1
-note left: "Session_1",1,"content1"
-fake(CDE) <- DEF : Action3
-note left: "Session3",3,"content3"
-DEF -> fake(BCD) : Action4
-note left: "Session4",4,"content4"
-ABC <- fake(BCD) : Action5
-note left: "Session5",5,"content5"

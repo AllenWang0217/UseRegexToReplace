@@ -1,0 +1,6 @@
+BCD -> fake(CDE) : Action2
+note left: "Session_2",2,"content2"
+fake(CDE) <- DEF : Action3
+note left: "Session3",3,"content3"
+fake(CDE) -> BCD : Action7
+note left: "Session7",7,"content7"
