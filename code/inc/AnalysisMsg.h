@@ -37,17 +37,22 @@ namespace{
 		}
 		return result;
 	}	
+	void handleWait(FlowResult* result, vector<string> imformation) {
+		f_sub_session << imformation[0] << endl;
+		f_fake_based_flow << "Wait " << result->msg << " (" << imformation[0] << "-" << imformation[1] << "-" << imformation[2] << ")" << endl;
+	}
+	void handleSend(FlowResult* result, vector<string> imformation) {
+		f_fake_based_flow << "Send " << result->msg << " (" << imformation[0] << "-" << imformation[1] << "-" << imformation[2] << ")" << endl;
+	}
 }
 
 struct AnalysisMsg {
 	void analysis(FlowResult* result, string line) {
 		vector<string> frist_split = split(line, ":");
 		vector<string> second_split = split(frist_split[1], ",");
-		if (result->isFakeSub) {
-			f_sub_session << second_split[0] << endl;
-			f_fake_based_flow << "Wait " << result->msg << " (" << second_split[0] << "-" << second_split[1] << "-" << second_split[2] << ")" << endl;
-		}
+		if (result->isFakeSub) 
+			handleWait(result, second_split);
 		else
-			f_fake_based_flow << "Send " << result->msg << " (" << second_split[0] << "-" << second_split[1] << "-" << second_split[2] << ")" << endl;	
+			handleSend(result, second_split);
 	}
 };

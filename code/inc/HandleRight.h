@@ -3,12 +3,12 @@
 #include <sstream>
 #include <fstream>
 #include <regex>  
-#include "Handle.h"
 #include "helper.h"
+#include "Handle.h"
 
 extern ofstream fout;
 
-struct HandleRight {
+struct HandleRight : Handle {
 	bool handleRight(vector<string> fake, string line, regex pattern, FlowResult* result) {
 		result->needFake = false;
 		result->isFakeSub = false;

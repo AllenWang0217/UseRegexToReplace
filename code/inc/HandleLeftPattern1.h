@@ -2,7 +2,7 @@
 
 #include "HandleLeft.h"
 
-struct HandleLeftPattern1 : public Handle, public HandleLeft {
+struct HandleLeftPattern1 : public HandleLeft {
 	HandleLeftPattern1(Handle* nextHandle) : nextHandle(nextHandle) {};
 	void exec(string line, vector<string> fake, FlowResult* result) {
 		regex pattern(LEFT_PATTERN_1);
